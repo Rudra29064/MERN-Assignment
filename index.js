@@ -74,7 +74,7 @@ const session = require('express-session')
 const passport = require('passport')
 const {initializePassport} = require('./passportConfig')
 
-mongoose.connect('mongodb://127.0.0.1:27017/formData')
+mongoose.connect('mongodb://127.0.0.1:27017/MERN')
 .then(()=>{console.log("MongoDB connected")})
 .catch((err)=>console.log("MongoDB connection error",err));
 
@@ -118,7 +118,7 @@ app.get('/login', (req, res)=>{
     res.sendFile(__dirname+'/public/login.html')
 })
 app.post('/login',passport.authenticate('local',{failureRedirect:'/login'}), (req, res)=>{
-    res.sendFile(`Welcome ${req.user.username}`)
+    res.sendFile(`Welcome ${req.user.UserName}`)
 })
 app.listen(8000,()=>{
     console.log('http://localhost:8000')
